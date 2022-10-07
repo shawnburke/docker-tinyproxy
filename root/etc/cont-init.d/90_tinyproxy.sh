@@ -12,6 +12,7 @@ TP_CONF="/etc/tinyproxy/tinyproxy.conf"
 : ${MINSPARESERVERS:="10"}
 : ${MAXSPARESERVERS:="20"}
 : ${STARTSERVERS:="10"}
+: ${REVERSE:="No"}
 
 if [[ ! -f $TP_CONF ]]
  then
@@ -28,8 +29,9 @@ MinSpareServers $MINSPARESERVERS
 MaxSpareServers $MAXSPARESERVERS
 StartServers $STARTSERVERS
 PidFile "/tmp/tinyproxy.pid"
-XTinyproxy Off 
+XTinyproxy Off
 DisableViaHeader On
+ReverseOnly $REVERSE
 EOF
 
 for a in $ALLOWED
